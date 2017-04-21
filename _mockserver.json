@@ -821,6 +821,69 @@
                     {
                         "name": "导航四",
                         "catID": "@increment"
+                    },
+                    {
+                        "name": "导航五",
+                        "submenus": [
+                            {
+                                "name": "子导航1",
+                                "catID": "@increment"
+                            },
+                            {
+                                "name": "子导航2",
+                                "catID": "@increment"
+                            },
+                            {
+                                "name": "子导航3",
+                                "catID": "@increment"
+                            },
+                            {
+                                "name": "子导航4",
+                                "catID": "@increment"
+                            }
+                        ]
+                    }
+                ],
+                "banners": [
+                    {
+                        "src": "@image('960x320', '#50B347', '#000', 'Mock-1.js')",
+                        "catID": "@increment",
+                        "uID": "@increment"
+                    },
+                    {
+                        "src": "@image('960x320', '#ffc107', '#f00', 'Mock-2.js')",
+                        "catID": "@increment",
+                        "uID": "@increment"
+                    },
+                    {
+                        "src": "@image('960x320', '#03a9f4', '#fff', 'Mock-3.js')",
+                        "catID": "@increment"
+                    }
+                ],
+                "sideMenus": [
+                    {
+                        "name": "侧栏导航一",
+                        "catID": "@increment"
+                    },
+                    {
+                        "name": "侧栏导航二",
+                        "catID": "@increment"
+                    },
+                    {
+                        "name": "侧栏导航三",
+                        "catID": "@increment"
+                    },
+                    {
+                        "name": "侧栏导航四",
+                        "catID": "@increment"
+                    },
+                    {
+                        "name": "侧栏导航五",
+                        "catID": "@increment"
+                    },
+                    {
+                        "name": "侧栏导航六",
+                        "catID": "@increment"
                     }
                 ]
             }

@@ -1,9 +1,11 @@
 <template>
   <div id="app">
    <Topmenu :menus="menus"></Topmenu>
-    <!-- <keep-alive> -->
-      <router-view></router-view>
-    <!-- </keep-alive> -->
+   <div class="Wrapper">
+      <!-- <keep-alive> -->
+        <router-view></router-view>
+      <!-- </keep-alive> -->
+    </div>
   </div>
 </template>
 
@@ -37,17 +39,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import "assets/css/style";
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   .hello{
     color: red;
   }
 }
-img{
-  width: 100px;
+.Wrapper{
+  width: 960px;
+  margin: 0 auto;
 }
 </style>
