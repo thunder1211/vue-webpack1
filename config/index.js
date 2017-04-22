@@ -36,8 +36,11 @@ module.exports = {
             }
         },
         '/api': {
-            target: 'http://10.10.23.40:7777',
-            changeOrigin: true
+            target: 'http://localhost:7777',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': '/api'
+            }
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
