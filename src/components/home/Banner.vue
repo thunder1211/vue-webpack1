@@ -76,12 +76,18 @@ export default {
 </script>
 
 <style lang="scss">
+.Banner{
+  border-radius: 5px;
+  overflow: hidden;
+}
 .swiper-BTN-prev,
 .swiper-BTN-next{
   position: absolute;
   z-index: 20;
   top: 50%;
   margin-top: -30px;
+  padding: 10px 0;
+  border-radius: 5px;
   cursor: pointer;
   .xaiconfont{
     font-size: 50px;
@@ -89,6 +95,7 @@ export default {
     opacity: .5
   }
   &:hover{
+    background: rgba(0,0,0,.5);
     .xaiconfont{
       opacity: 1;
     }
@@ -103,5 +110,11 @@ export default {
 .swiper-BTN-prev.swiper-button-disabled,
 .swiper-BTN-next.swiper-button-disabled{
   display: none;
+}
+.swiper-wrapper{
+  .swiper-slide{
+    border-radius: 5px;
+    overflow: hidden;
+  }
 }
 </style>

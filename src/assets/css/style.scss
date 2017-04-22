@@ -40,3 +40,24 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(359deg); }
 }
+@mixin clearFix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+  }
+}
+.clearFix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+  }
+}
+.co_green{
+  color: #7dc5a6;
+}

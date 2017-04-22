@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/css/style";
+@import "../../../assets/css/style";
 
 .loading{
   position: fixed;

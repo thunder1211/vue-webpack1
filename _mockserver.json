@@ -846,17 +846,17 @@
                 ],
                 "banners": [
                     {
-                        "src": "@image('960x320', '#50B347', '#000', 'Mock-1.js')",
+                        "src": "@image('1070x320', '#50B347', '#000', 'Mock-1.js')",
                         "catID": "@increment",
                         "uID": "@increment"
                     },
                     {
-                        "src": "@image('960x320', '#ffc107', '#f00', 'Mock-2.js')",
+                        "src": "@image('1070x320', '#ffc107', '#f00', 'Mock-2.js')",
                         "catID": "@increment",
                         "uID": "@increment"
                     },
                     {
-                        "src": "@image('960x320', '#03a9f4', '#fff', 'Mock-3.js')",
+                        "src": "@image('1070x320', '#03a9f4', '#fff', 'Mock-3.js')",
                         "catID": "@increment"
                     }
                 ],
@@ -885,7 +885,66 @@
                         "name": "侧栏导航六",
                         "catID": "@increment"
                     }
-                ]
+                ],
+                "newest|6": [
+                    {
+                        "catName": "@pick(['说唱音乐', '古典歌曲', '爵士歌曲', '经典歌曲', '流行歌曲', '乡村歌曲', '民谣歌曲'])",
+                        "catID": "@increment",
+                        "daoName": "@csentence(10, 20)",
+                        "daoJing": "音频出自某某某",
+                        "daoDate": "@datetime('MM月dd日')",
+                        "uID": "@increment"
+                    }
+                ],
+                "recommend|6": [
+                    {
+                        "catName": "@pick(['说唱音乐', '古典歌曲', '爵士歌曲', '经典歌曲', '流行歌曲', '乡村歌曲', '民谣歌曲'])",
+                        "catID": "@increment",
+                        "daoName": "@csentence(10, 20)",
+                        "daoJing": "音频出自某某某",
+                        "daoDate": "@datetime('MM月dd日')",
+                        "uID": "@increment"
+                    }
+                ],
+                "hottest|6": [
+                    {
+                        "catName": "@pick(['说唱音乐', '古典歌曲', '爵士歌曲', '经典歌曲', '流行歌曲', '乡村歌曲', '民谣歌曲'])",
+                        "catID": "@increment",
+                        "daoName": "@csentence(10, 20)",
+                        "daoJing": "音频出自某某某",
+                        "daoDate": "@datetime('MM月dd日')",
+                        "uID": "@increment"
+                    }
+                ],
+                "daily": {
+                    "catID": "@increment",
+                    "list|4": [
+                        {
+                            "daoName": "@csentence(10, 20)",
+                            "daoJing": "音频出自某某某",
+                            "daoDate": "@datetime('MM月dd日')",
+                            "uID": "@increment"
+                        }
+                    ]
+                },
+                "sunday": {
+                    "catID": "@increment",
+                    "list|4": [
+                        {
+                            "daoName": "@csentence(10, 20)",
+                            "daoJing": "音频出自某某某",
+                            "daoDate": "@datetime('MM月dd日')",
+                            "uID": "@increment"
+                        }
+                    ]
+                },
+                "testimony": {
+                    "catID": "@increment",
+                    "src": "@image('250x80', '#03a9f4', '#fff', 'Mock.js')"
+                },
+                "wechat": {
+                    "src": "@image('250x120', '#03a9f4', '#fff', 'Mock.js')"
+                }
             }
         }
     }

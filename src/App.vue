@@ -51,7 +51,7 @@ export default {
   }
 }
 .Wrapper{
-  width: 960px;
+  width: 1070px;
   margin: 0 auto;
 }
 </style>
