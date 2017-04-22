@@ -28,7 +28,7 @@ Vue.component(ActionSheet.name, ActionSheet)
 Vue.prototype.$dialog = {
 	toast: Toast
 }
-import Banner from '@/components/Banner'
+import Banner from './Banner'
 import Loading from '@/components/common/Loading'
 
 export default {

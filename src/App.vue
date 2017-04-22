@@ -12,7 +12,7 @@
 <script>
 
 import axios from 'axios'
-import Topmenu from '@/components/Topmenu'
+import Topmenu from '@/components/block/Topmenu'
 
 export default {
   name: 'app',
