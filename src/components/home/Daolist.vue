@@ -4,13 +4,15 @@
       <router-link :to="'/category/'+dao.catID+(dao.uID?'?uid='+dao.uID:'')">
         <template v-if="isSpecialList">
           <div class="catName"
-            :class="[{shuochang: dao.catName === '说唱音乐'},
-            {gudian: dao.catName === '古典歌曲'},
-            {jueshi: dao.catName === '爵士歌曲'},
-            {jingdian: dao.catName === '经典歌曲'},
-            {liuxing: dao.catName === '流行歌曲'},
-            {xiangcun: dao.catName === '乡村歌曲'},
-            {minyao: dao.catName === '民谣歌曲'}]"
+            :class="[
+              {shuochang: dao.catName === '说唱音乐'},
+              {gudian: dao.catName === '古典歌曲'},
+              {jueshi: dao.catName === '爵士歌曲'},
+              {jingdian: dao.catName === '经典歌曲'},
+              {liuxing: dao.catName === '流行歌曲'},
+              {xiangcun: dao.catName === '乡村歌曲'},
+              {minyao: dao.catName === '民谣歌曲'}
+            ]"
           ><span class="xaiconfont">&#xe633;</span> {{dao.catName}}</div>
         </template>
         <template v-else>

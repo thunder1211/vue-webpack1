@@ -6,6 +6,9 @@
       </router-link>
     </div>
     <ul class="Nav">
+      <li>
+        <router-link class="navItem" to="/">首页</router-link>
+      </li>
       <li v-for="menu in menus">
         <template v-if="menu.catID">
           <router-link class="navItem" :to="'/category/'+menu.catID">{{menu.name}}</router-link>

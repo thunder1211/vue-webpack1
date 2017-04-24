@@ -28,6 +28,7 @@ export default {
     top: 50%;
     margin-top: -40px;
     font-size: 72px;
+    color: #ccc;
   }
 }
 </style>

@@ -5,6 +5,8 @@ import Home from '@/components/home/Home'
 // import Mypage from '@/components/Mypage'
 
 Vue.use(Router)
+const Category = resolve => require(['@/components/category/index'], resolve)
+const Detail = resolve => require(['@/components/detail/index'], resolve)
 const Mypage = resolve => require(['@/components/Mypage'], resolve)
 
 export default new Router({
@@ -13,6 +15,16 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/category/:catid',
+      name: 'Category',
+      component: Category
+    },
+    {
+      path: '/category/:catid/did/:did',
+      name: 'Detail',
+      component: Detail
     },
     {
       path: '/mypage',
