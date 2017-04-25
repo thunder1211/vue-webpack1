@@ -88,8 +88,8 @@ export default {
 			console.log('loadError')
 		},
 		onEnded () {
-			console.log('onEnded')
 			this.audio.currentTime = 0
+			this.playing = false
 		},
 		changeRange (val) {
 			this.audio.currentTime = val
