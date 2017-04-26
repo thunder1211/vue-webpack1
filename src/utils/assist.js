@@ -179,4 +179,29 @@ const Browser = function (userAgent) {
     }
 }
 
-export {pageScroll, isColor, getScrollview, checkInview, addClass, removeClass, Browser}
+// var seconds = 3921
+// 时间格式化
+const timeFormater = function (seconds) {
+    var min = Math.floor(seconds / 60)
+    var second = seconds % 60
+    var hour = ''
+    var newMin = ''
+    var time = ''
+    if (min > 60) {
+        hour = Math.floor(min / 60)
+        newMin = min % 60
+    }
+    if (second < 10) {
+        second = '0' + second
+    }
+    if (min < 10) {
+        min = '0' + min
+    }
+    time = hour ? (hour + ':' + newMin + ':' + second) : (min + ':' + second)
+    return time
+}
+// timeFilter(seconds)
+// console.log(seconds)
+// console.log(timeFormat)
+
+export {pageScroll, isColor, getScrollview, checkInview, addClass, removeClass, Browser, timeFormater}

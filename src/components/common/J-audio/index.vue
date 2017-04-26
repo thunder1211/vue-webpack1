@@ -13,6 +13,7 @@
 			v-model="currentTime"
 			:min="0"
 			:max="duration"
+			:formatter="formatCurrentTime"
 			:realTime="true"
 			:lazy="true"
 			:dot-size="16"
@@ -26,18 +27,18 @@
 
 <script>
 import vueSlider from 'vue-slider-component'
-import {Browser} from '@/utils/assist'
+import {Browser, timeFormater} from '@/utils/assist'
 const browser = new Browser()
 console.log(browser)
 
-var Utils = {
-	s2m (s) {
-		// alert('s2m:'+s);
-		// if (s == 0) return '0:00';
-		if (s.toString() === 'NaN') return '0:00'
-		return Math.floor(s / 60) + ':' + (s % 60 / 100).toFixed(2).slice(-2)
-	}
-}
+// var Utils = {
+// 	s2m (s) {
+// 		// alert('s2m:'+s);
+// 		// if (s == 0) return '0:00';
+// 		if (s.toString() === 'NaN') return '0:00'
+// 		return Math.floor(s / 60) + ':' + (s % 60 / 100).toFixed(2).slice(-2)
+// 	}
+// }
 
 export default {
   name: 'j-audio',
@@ -66,8 +67,8 @@ export default {
   		return false
   		// return !this.isIOS
   	},
-		formatter () {
-			return Utils.s2m(this.currentTime)
+		formatCurrentTime () {
+			return timeFormater(this.currentTime)
 		}
   },
   methods: {
