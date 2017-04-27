@@ -251,15 +251,13 @@
                 "code": 0,
                 "msg": "",
                 "data": {
-                    "catID": "@increment",
-                    "total": "25",
-                    "currentPage": "1",
-                    "uID": "@id",
+                    "total": 26,
+                    "currentPage": 1,
                     "list|5": [
                         {
                             "uName": "@cname",
                             "cDate": "@datetime('MM月dd日')",
-                            "cTexts": "@csentence(10, 40)"
+                            "cTexts": "@csentence(10, 500)"
                         }
                     ]
                 }

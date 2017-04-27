@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'xinaniconfont';  /* project id 284569 */
-  src: url('//at.alicdn.com/t/font_erk0y1i25f561or.eot');
-  src: url('//at.alicdn.com/t/font_erk0y1i25f561or.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_erk0y1i25f561or.woff') format('woff'),
-  url('//at.alicdn.com/t/font_erk0y1i25f561or.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_erk0y1i25f561or.svg#xinaniconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_mpcdqv1h91u7hkt9.eot');
+  src: url('//at.alicdn.com/t/font_mpcdqv1h91u7hkt9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_mpcdqv1h91u7hkt9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_mpcdqv1h91u7hkt9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_mpcdqv1h91u7hkt9.svg#xinaniconfont') format('svg');
 }
 .xaiconfont{
   font-family:"xinaniconfont" !important;
@@ -60,4 +60,8 @@
 }
 .co_green{
   color: #7dc5a6;
+}
+.link{
+  color: #3498db;
+  cursor: pointer;
 }
