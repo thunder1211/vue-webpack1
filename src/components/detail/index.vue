@@ -63,12 +63,12 @@
     created () {
       var _this = this
       Loading.open()
-      var catID = this.$route.params.catid
-      var dID = this.$route.params.did
+      this.catID = this.$route.params.catid
+      this.dID = this.$route.params.did
       axios.get('/api/detail', {
         params: {
-          catid: catID,
-          did: dID
+          catid: this.catID,
+          did: this.dID
         }
       })
         .then(function ({data}) {
@@ -85,8 +85,8 @@
         })
       axios.get('/api/comments', {
         params: {
-          catid: catID,
-          did: dID
+          catid: this.catID,
+          did: this.dID
         }
       })
         .then(function ({data}) {
@@ -104,6 +104,8 @@
     },
     data () {
       return {
+        catID: '',
+        dID: '',
         detail: {},
         comments: {}
       }
@@ -121,8 +123,28 @@
     },
     methods: {
       changePage (page) {
-        alert(page)
-      }
+        // alert(page)
+        var _this = this
+        axios.get('/api/comments', {
+          params: {
+            catid: this.catID,
+            did: this.dID,
+            page: page
+          }
+        })
+          .then(function ({data}) {
+            if (data.code !== 0) {
+              console.error(data.msg)
+              return
+            }
+            console.log(data.data)
+            _this.comments = data.data
+            Loading.close()
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+        }
     }
   }
 </script>
@@ -163,7 +185,7 @@
   .detailInfo{
     margin: 10px 0;
     padding: 15px;
-    background: #eee;
+    background: #fff;
     border-radius: 5px;
     li{
       margin: 5px 0;
@@ -174,7 +196,7 @@
     padding: 15px;
     min-height: 200px;
     font-size: 14px;
-    background: #eee;
+    background: #fff;
     border-radius: 5px;
     ul{
       li{
@@ -194,12 +216,13 @@
     margin-top: 15px;
     padding: 10px 15px;
     border-radius: 5px;
-    background: #eee;
+    background: #fff;
     .comment{
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+      padding: 15px 0;
+      border-bottom: 1px dashed #ddd;
+      &:last-child{
+        border-bottom: none;
+      }
       .comConts{
         margin-top: 5px;
         line-height: 2em;

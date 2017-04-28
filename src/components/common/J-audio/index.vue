@@ -3,6 +3,8 @@
     <audio id="audioPlay"
 	    :src="src"
 	    @timeupdate="updateTime($event)"
+	    @playing="onPlaying"
+	    @pause="onPause"
 	    @error="loadError"
 	    @ended="onEnded"
     ></audio>
@@ -87,6 +89,13 @@ export default {
   	toPause () {
 			this.audio.pause()
 			this.playing = false
+		},
+		// 在手机屏幕关闭时进行暂停播放操作，需要监听onpause和onplaying事件
+		onPause () {
+			this.toPause()
+		},
+		onPlaying () {
+			this.toPlay()
 		},
 		updateTime (e) {
 			this.currentTime = Math.floor(e.target.currentTime);

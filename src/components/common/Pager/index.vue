@@ -3,7 +3,7 @@
     <ul class="pagerList">
       <li class="pagerItem"
         v-for="page in pages"
-        :class="{current: page === current}"
+        :class="{current: page === currentPage}"
         @click="change(page)"
       >{{page}}</li>
     </ul>
@@ -27,6 +27,7 @@ export default {
   },
   data () {
     return {
+      currentPage: this.current
     }
   },
   computed: {
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     change (page) {
-      this.current = page
+      this.currentPage = page
       this.$emit('change', page)
     }
   }
