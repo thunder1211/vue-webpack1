@@ -199,7 +199,7 @@
                     "catID": "@increment",
                     "catName": "@cword(3,7)",
                     "src": "@image('1070x120', '#50B347', '#000', '.')",
-                    "daoName": "@csentence(10, 20)",
+                    "daoName": "@cword(10, 20)",
                     "daoJing": "音频出自某某某",
                     "daoDate": "@datetime('MM月dd日')",
                     "uID": "@increment",

@@ -6,8 +6,15 @@
       <div class="daoName">{{detail.daoName}}</div>
     </div>
     <div class="mainConts">
-      <div class="detailSec">
-        <jAudio :src="detail.url" :duration="detail.duration"></jAudio>
+      <div class="detailSec" :class="{isAffix: isAffix}">
+        <div class="audioAffixBG"></div>
+        <ivuAffix class="audioAffix"
+        @on-change="onAffix">
+          <div class="affix_daoName" v-show="isAffix">
+            题目：{{detail.daoName}}
+          </div>
+          <jAudio :src="detail.url" :duration="detail.duration"></jAudio>
+        </ivuAffix>
         <ul class="detailInfo">
           <li>出处：{{detail.daoJing}}</li>
           <li>日期：{{detail.daoDate}}</li>
@@ -36,11 +43,17 @@
             </div>
           </li>
         </ul>
-        <Pager
-          v-if="comments.total > 5"
-          :total="comments.total"
-          @change="changePage"
-        ></Pager>
+        <div class="pagination">
+          <ivuPage
+            v-if="comments.total > pageSize"
+            size="small"
+            :simple="false"
+            :current="currentPage"
+            :page-size="pageSize"
+            :total="comments.total"
+            @on-change="changePage"
+          ></ivuPage>
+        </div>
       </div>
     </div>
   </div>
@@ -51,14 +64,16 @@
   import Loading from '@/components/common/Loading/index'
   import jAudio from '@/components/common/J-audio/index'
   import Readmore from '@/components/common/Readmore/index'
-  import Pager from '@/components/common/Pager/index'
+  import ivuPage from 'iview/src/components/page'
+  import ivuAffix from 'iview/src/components/affix'
 
   export default {
     name: 'detail',
     components: {
       jAudio,
       Readmore,
-      Pager
+      ivuPage,
+      ivuAffix
     },
     created () {
       var _this = this
@@ -107,7 +122,10 @@
         catID: '',
         dID: '',
         detail: {},
-        comments: {}
+        comments: {},
+        currentPage: 1,
+        pageSize: 5,
+        isAffix: false
       }
     },
     computed: {
@@ -144,7 +162,11 @@
           .catch(function (error) {
             console.log(error)
           })
-        }
+      },
+      onAffix (isAffix) {
+          this.isAffix = isAffix
+          console.log(isAffix);
+      }
     }
   }
 </script>
@@ -204,6 +226,14 @@
       }
     }
   }
+  &.isAffix{
+    .affix_daoName{
+      padding: 5px 0 0;
+      margin-bottom: -5px;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
 }
 .commentsSec{
   margin-top: 25px;
@@ -238,6 +268,44 @@
       .comCdate{
         text-align: right;
       }
+    }
+  }
+  .pagination{
+    text-align: center;
+    .ivu-page{
+      display: inline-block;
+      margin: 15px 0;
+      vertical-align: top;
+      &.mini{
+        .ivu-page-prev,
+        .ivu-page-next,
+        .ivu-page-item{
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+}
+.isAffix{
+  .audioAffixBG{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    @include backgroundGradient(#ffffff, #f9f9f9, vertical);
+    box-shadow: 0 0 5px #999;
+  }
+}
+.ivu-affix{
+  height: 40px;
+  .jAudio{
+    .btn_play{
+      .xaiconfont{
+      }
+    }
+    .audioTimeShow{
     }
   }
 }

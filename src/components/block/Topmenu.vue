@@ -7,7 +7,7 @@
     </div>
     <ul class="Nav">
       <li>
-        <router-link class="navItem" to="/">首页</router-link>
+        <router-link class="navItem" to="/" exact>首页</router-link>
       </li>
       <li v-for="menu in menus">
         <template v-if="menu.catID">
@@ -70,6 +70,11 @@ export default {
         line-height: 50px;
         padding: 0 20px;
         cursor: pointer;
+        color: #777;
+      }
+      .router-link-active{
+        background: rgba(0,0,0,.5);
+        color: #fff;
       }
     }
     .subNav{
@@ -104,6 +109,10 @@ export default {
               background: rgba(0,0,0,.5);
               color: #fff;
             }
+          }
+          .router-link-active{
+            background: rgba(0,0,0,.5);
+            color: #fff;
           }
         }
       }

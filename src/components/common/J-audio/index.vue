@@ -126,6 +126,7 @@ export default {
 	.btn_play{
 		float: left;
 		margin-left: 12px;
+		line-height: 40px;
 		cursor: pointer;
 		.xaiconfont{
 			font-size: 36px;

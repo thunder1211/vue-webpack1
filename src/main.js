@@ -3,11 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import YDUI from 'vue-ydui'
 import 'vue-ydui/dist/ydui.base.css'
+import 'iview/dist/styles/iview.css'
+import './assets/css/style.scss'
 
 Vue.config.productionTip = false
-// Vue.use(YDUI)
 
 /* eslint-disable no-new */
 new Vue({

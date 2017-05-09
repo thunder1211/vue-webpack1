@@ -7,7 +7,7 @@
       </div>
       <ul class="catList">
         <li v-for="dao in category.list">
-          <router-link class="link" :to="'/category/'+category.catID+'/did/'+dao.uID">
+          <router-link class="link" :to="'/category/'+catID+'/did/'+dao.uID">
             <span class="playIco xaiconfont">&#xe633;</span>
             <div class="daoName">{{dao.daoName}}</div>
             <div class="daoinfo daoJing">出处：{{dao.daoJing}}</div>
@@ -30,8 +30,8 @@
     created () {
       var _this = this
       Loading.open()
-      var catID = this.$route.params.catid
-      axios.get('/api/category/' + catID)
+      this.catID = this.$route.params.catid
+      axios.get('/api/category/' + this.catID)
         .then(function ({data}) {
           console.log(data.category)
           _this.category = data.category
@@ -43,6 +43,7 @@
     },
     data () {
       return {
+        catID: '',
         category: {}
       }
     },
