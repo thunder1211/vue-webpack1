@@ -1,40 +1,48 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
-import Home from '@/components/home/Home'
-// import Mypage from '@/components/Mypage'
+import Login from '@/components/login/index'
 
 Vue.use(Router)
+const Home = resolve => require(['@/components/home/Home'], resolve)
+const topMenu = resolve => require(['@/components/topmenu/index'], resolve)
 const Category = resolve => require(['@/components/category/index'], resolve)
 const Detail = resolve => require(['@/components/detail/index'], resolve)
-// const Mypage = resolve => require(['@/components/Mypage'], resolve)
 
 export default new Router({
   routes: [
     {
       path: '/',
+      name: 'index',
+      redirect: '/login'
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/home',
       name: 'Home',
-      component: Home
+      components: {
+        default: Home,
+        topmenu: topMenu
+      }
     },
     {
       path: '/category/:catid',
       name: 'Category',
-      component: Category
+      components: {
+        default: Category,
+        topmenu: topMenu
+      }
     },
     {
       path: '/category/:catid/did/:did',
       name: 'Detail',
-      component: Detail
+      components: {
+        default: Detail,
+        topmenu: topMenu
+      }
     }
-    // {
-    //   path: '/mypage',
-    //   name: 'Mypage',
-    //   component: Mypage
-    // },
-    // {
-    //   path: '/hello',
-    //   name: 'Hello',
-    //   component: Hello
-    // }
   ]
 })

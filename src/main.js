@@ -7,7 +7,20 @@ import 'vue-ydui/dist/ydui.base.css'
 import 'iview/dist/styles/iview.css'
 import './assets/css/style.scss'
 
+import { jcookie } from '@/utils/assist'
+
 Vue.config.productionTip = false
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') {
+  	if (jcookie('SESSIONID')) router.replace('/home')
+  	next()
+  } else if (jcookie('SESSIONID')) {
+  	next()
+  } else {
+  	router.push('/login')
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

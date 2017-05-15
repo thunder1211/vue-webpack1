@@ -1,7 +1,7 @@
 <template>
   <ul class="daoList" :class="listType">
     <li class="daoBlock" v-for="dao in listitems">
-      <router-link :to="'/category/'+dao.catID+(dao.uID?'?uid='+dao.uID:'')">
+      <router-link :to="'/category/'+dao.catID+(dao.dID?'/did/'+dao.dID:'')">
         <template v-if="isSpecialList">
           <div class="catName"
             :class="[

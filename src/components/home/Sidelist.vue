@@ -8,7 +8,7 @@
     </div>
     <ul class="sideList">
       <li class="daoBlock" v-for="dao in listitem.list">
-        <router-link :to="'/category/'+listitem.catID+'?uid='+dao.uID">
+        <router-link :to="'/category/'+listitem.catID+'/did/'+dao.dID">
           <div class="daoName">{{dao.daoName}}</div>
           <div class="daoJing">{{dao.daoJing}}</div>
           <div class="daoDate">{{dao.daoDate}}</div>

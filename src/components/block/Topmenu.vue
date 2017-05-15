@@ -10,15 +10,17 @@
         <router-link class="navItem" to="/" exact>首页</router-link>
       </li>
       <li v-for="menu in menus">
-        <template v-if="menu.catID">
-          <router-link class="navItem" :to="'/category/'+menu.catID">{{menu.name}}</router-link>
+        <template v-if="menu.children">
+          <span class="navItem">{{menu.catName}}</span>
+          <ul class="subNav" v-if="menu.children && menu.children.length">
+            <li v-for="submenu in menu.children">
+              <router-link class="navItem" :to="'/category/'+submenu.catID">{{submenu.catName}}</router-link>
+            </li>
+          </ul>
         </template>
-        <span class="navItem" v-else>{{menu.name}}</span>
-        <ul class="subNav" v-if="menu.submenus && menu.submenus.length">
-          <li v-for="submenu in menu.submenus">
-            <router-link class="navItem" :to="'/category/'+submenu.catID">{{submenu.name}}</router-link>
-          </li>
-        </ul>
+        <template v-else>
+          <router-link class="navItem" :to="'/category/'+menu.catID">{{menu.catName}}</router-link>
+        </template>
       </li>
     </ul>
   </div>

@@ -4,7 +4,7 @@
       <Banner :banners="banners"></Banner>
       <ul class="sideNav">
         <li v-for="menu in sideMenus">
-          <router-link :to="'/category/'+menu.catID">{{menu.name}}
+          <router-link :to="'/category/'+menu.catID">{{menu.catName}}
             <span class="xaiconfont">&#xe60d;</span>
           </router-link>
         </li>
@@ -73,7 +73,11 @@
       Loading.open()
       axios.get('/api/home')
         .then(function ({data}) {
-          console.log(data.banners)
+          if (data.code !== 0) {
+            console.error(data.msg)
+            return
+          }
+          data = data.data
           Loading.close()
           _this.banners = data.banners
           _this.sideMenus = data.sideMenus

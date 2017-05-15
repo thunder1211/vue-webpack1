@@ -27,6 +27,7 @@
               <li>{{text}}。</li>
             </template>
           </ul>
+          <div v-html="detail.daoHtml"></div>
         </div>
       </div>
       <div class="commentsSec">

@@ -1,40 +1,16 @@
 <template>
   <div id="app">
-   <Topmenu :menus="menus"></Topmenu>
-   <div class="Wrapper">
-      <!-- <keep-alive> -->
+    <router-view name="topmenu"></router-view>
+    <div class="Wrapper">
         <router-view></router-view>
-      <!-- </keep-alive> -->
     </div>
   </div>
 </template>
 
 <script>
 
-import axios from 'axios'
-import Topmenu from '@/components/block/Topmenu'
-
 export default {
-  name: 'app',
-  created () {
-    var _this = this
-      axios.get('/api/home')
-        .then(function ({data}) {
-          console.log(data.menus)
-          _this.menus = data.menus
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-  },
-  data () {
-    return {
-      menus: []
-    }
-  },
-  components: {
-    Topmenu
-  }
+  name: 'app'
 }
 </script>
 
@@ -46,9 +22,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  .hello{
-    color: red;
-  }
 }
 .Wrapper{
   width: 1070px;

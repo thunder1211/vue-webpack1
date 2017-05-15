@@ -3,7 +3,7 @@
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
       <swiper-slide v-for="(banner, index) in banners" :key="index">
-        <router-link :to="'/category/'+banner.catID+(banner.uID?'?uid='+banner.uID:'')">
+        <router-link :to="'/category/'+banner.catID+(banner.dID?'/did/'+banner.dID:'')">
           <img :src="banner.src">
         </router-link>
       </swiper-slide>
@@ -50,7 +50,7 @@ export default {
         // swiper callbacks
         // swiper的各种回调函数也可以出现在这个对象中，和swiper官方一样
         onTransitionStart (swiper) {
-          console.log(swiper)
+          // console.log(swiper)
         }
       }
     }
@@ -63,7 +63,7 @@ export default {
   mounted () {
     // you can use current swiper instance object to do something(swiper methods)
     // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-    console.log('this is current swiper instance object', this.swiper)
+    // console.log('this is current swiper instance object', this.swiper)
     // this.swiper.slideTo(3, 1000, false)
   },
   methods: {
