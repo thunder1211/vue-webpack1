@@ -18,4 +18,7 @@ npm run build
 npm run build --report
 ```
 
+## Mock server
+> mock数据服务 [mock-server](https://github.com/thunder1211/mock-server)
+
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
