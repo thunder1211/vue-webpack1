@@ -24,8 +24,7 @@ export default {
       var _this = this
       axios.post('/api/login', {id: this.uid, pw: this.pw})
         .then(function ({data}) {
-          console.log(data)
-          if (data.ok === 1) {
+          if (data.code === 0) {
             _this.$router.push('/home')
           } else {
             alert(data.msg)

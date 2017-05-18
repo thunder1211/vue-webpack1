@@ -73,12 +73,12 @@
       Loading.open()
       axios.get('/api/home')
         .then(function ({data}) {
+          Loading.close()
           if (data.code !== 0) {
-            console.error(data.msg)
+            console.log(data.msg)
             return
           }
           data = data.data
-          Loading.close()
           _this.banners = data.banners
           _this.sideMenus = data.sideMenus
           _this.newest = data.newest
@@ -90,7 +90,7 @@
           _this.sunday = data.sunday
         })
         .catch(function (error) {
-          console.log(error)
+          console.log(error.message)
         })
     },
     data () {

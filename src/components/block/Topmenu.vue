@@ -23,10 +23,14 @@
         </template>
       </li>
     </ul>
+    <div class="topR">
+      <a class="logout" @click="logout">登出</a>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   name: 'topmenu',
@@ -37,6 +41,20 @@ export default {
     return {}
   },
   methods: {
+    logout () {
+      var _this = this
+      axios.get('/api/logout')
+        .then(function ({data}) {
+          if (data.code === 0) {
+            _this.$router.push('/login')
+          } else {
+            alert(data.msg)
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
   }
 }
 </script>
@@ -119,6 +137,12 @@ export default {
         }
       }
     }
+  }
+  .logout{
+    position: absolute;
+    right: 20px;
+    top: 0;
+    line-height: 50px;
   }
 }
 </style>

@@ -88,13 +88,13 @@
         }
       })
         .then(function ({data}) {
+          Loading.close()
           if (data.code !== 0) {
             console.error(data.msg)
             return
           }
           console.log(data.data)
           _this.detail = data.data
-          Loading.close()
         })
         .catch(function (error) {
           console.log(error)
@@ -106,13 +106,13 @@
         }
       })
         .then(function ({data}) {
+          Loading.close()
           if (data.code !== 0) {
             console.error(data.msg)
             return
           }
           console.log(data.data)
           _this.comments = data.data
-          Loading.close()
         })
         .catch(function (error) {
           console.log(error)

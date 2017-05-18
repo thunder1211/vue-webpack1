@@ -28,23 +28,7 @@
   export default {
     name: 'Category',
     created () {
-      var _this = this
-      Loading.open()
-      this.catID = this.$route.params.catid
-      axios.get('/api/category/' + this.catID)
-        .then(function ({data}) {
-          if (data.code !== 0) {
-            console.error(data.msg)
-            return
-          }
-          data = data.data
-          console.log(data)
-          _this.category = data
-          Loading.close()
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      this.fetchData()
     },
     data () {
       return {
@@ -52,7 +36,30 @@
         category: {}
       }
     },
+    watch: {
+      // 如果路由有变化，会再次执行该方法
+      '$route': 'fetchData'
+    },
     methods: {
+      fetchData () {
+        var _this = this
+        Loading.open()
+        this.catID = this.$route.params.catid
+        axios.get('/api/category/' + this.catID)
+          .then(function ({data}) {
+            Loading.close()
+            if (data.code !== 0) {
+              console.error(data.msg)
+              return
+            }
+            data = data.data
+            console.log(data)
+            _this.category = data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
     },
     components: {
     }
