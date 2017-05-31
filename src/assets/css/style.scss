@@ -1,3 +1,5 @@
+@import "./mixin";
+
 @font-face {
   font-family: 'xinaniconfont';  /* project id 284569 */
   src: url('//at.alicdn.com/t/font_mpcdqv1h91u7hkt9.eot');
@@ -40,38 +42,7 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(359deg); }
 }
-@mixin backgroundGradient($from, $to, $dir){
-    @if $dir == horizontal {
-        background-color: #{$from}\9;
-        filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#{$from}', endColorstr = '#{$to}')";
-        -ms-filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#{$from}', endColorstr = '#{$to}')";
-        background-image: -moz-linear-gradient(left, #{$from}, #{$to});
-        background-image: -ms-linear-gradient(left, #{$from}, #{$to});
-        background-image: -o-linear-gradient(left, #{$from}, #{$to});
-        background-image: -webkit-gradient(linear, left top, right top, from(#{$from}), to(#{$to}));
-        background-image: -webkit-linear-gradient(left, #{$from}, #{$to});
-        background-image: linear-gradient(left, #{$from}, #{$to});
-    } @else if $dir == vertical {
-        background-color: #{$from}\9;
-        filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = '#{$from}', endColorstr = '#{$to}')";
-        -ms-filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = '#{$from}', endColorstr = '#{$to}')";
-        background-image: -moz-linear-gradient(top, #{$from}, #{$to});
-        background-image: -ms-linear-gradient(top, #{$from}, #{$to});
-        background-image: -o-linear-gradient(top, #{$from}, #{$to});
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#{$from}), to(#{$to}));
-        background-image: -webkit-linear-gradient(top, #{$from}, #{$to});
-        background-image: linear-gradient(top, #{$from}, #{$to});
-    }
-}
-@mixin clearFix{
-  &:after{
-    content: "";
-    display: block;
-    clear: both;
-    height: 0;
-    overflow: hidden;
-  }
-}
+
 .clearFix{
   &:after{
     content: "";
@@ -90,4 +61,22 @@
 }
 body{
   background: #F5F5F5;
+}
+
+.btn{
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  @include backgroundGradient(#00BCD4, #03A9F4, vertical);
+  &:hover{
+    background: #00BCD4;
+  }
+  &:active{
+    @include backgroundGradient(#03A9F4, #00BCD4, vertical);
+  }
 }

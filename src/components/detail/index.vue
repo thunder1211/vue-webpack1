@@ -32,6 +32,17 @@
       </div>
       <div class="commentsSec">
         <div class="commentTit">
+          <div class="tit">我的评论</div>
+        </div>
+        <div class="myComment">
+          <textarea v-model="comm" placeholder="请在这里填写~"></textarea>
+          <div class="btnArea">
+            <span class="btn" @click="submitComm">提交</span>
+          </div>
+        </div>
+      </div>
+      <div class="commentsSec">
+        <div class="commentTit">
           <div class="tit">评论</div>
         </div>
         <ul class="commentsList">
@@ -126,7 +137,8 @@
         comments: {},
         currentPage: 1,
         pageSize: 5,
-        isAffix: false
+        isAffix: false,
+        comm: ''
       }
     },
     computed: {
@@ -153,7 +165,7 @@
         })
           .then(function ({data}) {
             if (data.code !== 0) {
-              console.error(data.msg)
+              console.log(data.msg)
               return
             }
             console.log(data.data)
@@ -167,6 +179,24 @@
       onAffix (isAffix) {
           this.isAffix = isAffix
           console.log(isAffix);
+      },
+      submitComm () {
+        var _this = this
+        if (this.comm === '') {
+          alert('请填写内容！')
+          return
+        }
+        axios.post('/api/comments', {dID: this.dID, comments: this.comm})
+          .then(function ({data}) {
+            if (data.code !== 0) {
+              alert(data.msg)
+              return
+            }
+            _this.comments = data.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       }
     }
   }
@@ -284,6 +314,26 @@
           margin: 0 2px;
         }
       }
+    }
+  }
+  .myComment{
+    margin-top: 15px;
+    padding: 15px 15px 5px;
+    border-radius: 4px;
+    background: #fff;
+    textarea{
+      width: 100%;
+      height: 70px;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      &:focus{
+        box-shadow: 0 2px 10px #ddd inset;
+        border-color: #00bcd4;
+      }
+    }
+    .btnArea{
+      margin: 10px 0;
     }
   }
 }

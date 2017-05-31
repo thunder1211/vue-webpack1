@@ -10,6 +10,7 @@
 
 <script>
 import axios from 'axios'
+import { jcookie } from '@/utils/assist'
 
 export default {
   name: 'login',
@@ -25,6 +26,7 @@ export default {
       axios.post('/api/login', {id: this.uid, pw: this.pw})
         .then(function ({data}) {
           if (data.code === 0) {
+            jcookie('isLogined', true) // 前端保存登录状态（根据后端响应）
             _this.$router.push('/home')
           } else {
             alert(data.msg)

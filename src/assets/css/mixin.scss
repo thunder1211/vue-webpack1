@@ -1,0 +1,163 @@
+@mixin clearFix(){
+	&:after{
+	    content: '';
+	    display: block;
+	    height: 0;
+	    visibility: hidden;
+	    clear: both;
+	}
+}
+/* value 按小数 */
+@mixin opacity($value){
+	opacity: #{$value};
+	filter: alpha(opacity=#{$value * 100});
+}
+@mixin ieRGBA($colorVal, $alphaVal){
+	$alpha: null;
+  @if $alphaVal == 0.1 {
+  	$alpha: 19;
+  } @else if $alphaVal == 0.2 {
+  	$alpha: 33;
+  } @else if $alphaVal == 0.3 {
+  	$alpha: 4C;
+  } @else if $alphaVal == 0.4 {
+  	$alpha: 66;
+  } @else if $alphaVal == 0.5 {
+  	$alpha: 7F;
+  } @else if $alphaVal == 0.6 {
+  	$alpha: 99;
+  } @else if $alphaVal == 0.7 {
+  	$alpha: B2;
+  } @else if $alphaVal == 0.8 {
+  	$alpha: C8;
+  } @else if $alphaVal == 0.9 {
+  	$alpha: E5;
+  }
+  $filterVal: '#' + $alpha + $colorVal;
+  filter: #{'progid:DXImageTransform.Microsoft.gradient(startColorstr=' + $filterVal + ',endColorstr=' + $filterVal + ')'};
+}
+@mixin placeholderFontColor($fontColor){
+	&::-webkit-input-placeholder{
+		color: #{$fontColor};
+	}
+	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		color: #{$fontColor};
+	}
+	&::-moz-placeholder { /* Mozilla Firefox 19+ */
+		color: #{$fontColor};
+	}
+	&:-ms-input-placeholder { /* Internet Explorer 10+ */
+		color: #{$fontColor};
+	}
+}
+@mixin transformRotate($deg){
+	-webkit-transform: rotate(#{$deg});
+	-moz-transform: rotate(#{$deg});
+	transform: rotate(#{$deg});
+}
+@mixin transition($property, $duration, $timingFn, $delay){
+	-webkit-transition: #{$property} #{$duration} #{$timingFn} #{$delay};
+	-moz-transition: #{$property} #{$duration} #{$timingFn} #{$delay};
+	transition: #{$property} #{$duration} #{$timingFn} #{$delay};
+}
+
+@mixin triangle($dir, $color, $size, $height){  /* size是整体高度的一半, height是垂直高度 */
+    width: 0;
+    height: 0;
+    display: inline-block;
+    @if $dir == top {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $height solid $color;
+    } @else if $dir == bottom {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $height solid $color;
+    } @else if $dir == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $height solid $color;
+    } @else if $dir == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $height solid $color;
+    } @else if $dir == leftBottom {
+        border-bottom: $height solid $color;
+        border-right: $size solid transparent;
+    } @else if $dir == rightBottom {
+        border-bottom: $height solid $color;
+        border-left: $size solid transparent;
+    } @else if $dir == leftTop {
+        border-top: $height solid $color;
+        border-right: $size solid transparent;
+    } @else if $dir == rightTop {
+        border-top: $height solid $color;
+        border-left: $size solid transparent;
+    }
+}
+@mixin arrow($dir, $LineColor, $BgColor, $size, $height, $weight){
+	position: relative;
+	@include triangle(#{$dir}, #{$LineColor}, #{$size}, #{$height});
+	&:before{
+		position: absolute;
+		content: '';
+		display: inline-block;
+		@include triangle(#{$dir}, #{$BgColor}, #{$size - $weight} , #{$height - $weight});
+	  @if $dir == left {
+			right: - #{$height};
+			top: #{$weight - $size};
+	  } @else if $dir == right {
+			left: - #{$height};
+			top: #{$weight - $size};
+	  } @else if $dir == top {
+			left: - #{$size - $weight};
+			top: #{$weight};
+	  }
+	}
+}
+@mixin transition_transform($duration){
+            transition: transform #{$duration} 0s linear;
+            transition: -webkit-transform #{$duration} 0s linear;
+            transition: -moz-transform #{$duration} 0s linear;
+    -webkit-transition: -webkit-transform #{$duration} 0s linear;
+       -moz-transition: -moz-transform #{$duration} 0s linear;
+}
+@mixin transition($property, $duration){
+            transition: #{$property} #{$duration} 0s linear;
+    -webkit-transition: #{$property} #{$duration} 0s linear;
+       -moz-transition: #{$property} #{$duration} 0s linear;
+}
+
+
+@mixin backgroundGradient($from, $to, $dir){
+    @if $dir == horizontal {
+        background-color: #{$from}\9;
+        filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#{$from}', endColorstr = '#{$to}')";
+        -ms-filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#{$from}', endColorstr = '#{$to}')";
+        background-image: -moz-linear-gradient(left, #{$from}, #{$to});
+        background-image: -ms-linear-gradient(left, #{$from}, #{$to});
+        background-image: -o-linear-gradient(left, #{$from}, #{$to});
+        background-image: -webkit-gradient(linear, left top, right top, from(#{$from}), to(#{$to}));
+        background-image: -webkit-linear-gradient(left, #{$from}, #{$to});
+        background-image: linear-gradient(left, #{$from}, #{$to});
+    } @else if $dir == vertical {
+        background-color: #{$from}\9;
+        filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = '#{$from}', endColorstr = '#{$to}')";
+        -ms-filter: "progid: DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = '#{$from}', endColorstr = '#{$to}')";
+        background-image: -moz-linear-gradient(top, #{$from}, #{$to});
+        background-image: -ms-linear-gradient(top, #{$from}, #{$to});
+        background-image: -o-linear-gradient(top, #{$from}, #{$to});
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#{$from}), to(#{$to}));
+        background-image: -webkit-linear-gradient(top, #{$from}, #{$to});
+        background-image: linear-gradient(top, #{$from}, #{$to});
+    }
+}
+@mixin clearFix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+  }
+}

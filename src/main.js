@@ -8,7 +8,8 @@ import 'vue-ydui/dist/ydui.base.css'
 import 'iview/dist/styles/iview.css'
 import './assets/css/style.scss'
 
-// import { jcookie } from '@/utils/assist'
+// import eBus from '@/components/eventbus.js'
+import { jcookie } from '@/utils/assist'
 
 Vue.config.productionTip = false
 
@@ -16,6 +17,7 @@ Vue.config.productionTip = false
 axios.interceptors.response.use(function (res) {
   var data = res.data;
   if (data.code && data.code !== 0) {
+    jcookie('isLogined', null) // 需要重新登录时，重置cookie中额登陆状态
     router.push({ path: '/login' })
   }
   return res;
@@ -24,18 +26,18 @@ axios.interceptors.response.use(function (res) {
   return Promise.reject(error)
 });
 
-// router.beforeEach((to, from, next) => {
-//   console.log(from)
-//   if (to.path === '/login') {
-//   	if (jcookie('SESSIONID')) router.replace('/home')
-//   	next()
-//   } else if (jcookie('SESSIONID')) {
-//   	next()
-//   } else {
-//   	router.push('/login')
-//   }
-//   next()
-// })
+// 拦截前端路由
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') {
+  	if (jcookie('isLogined')) { // 判断前端保存的登录状态
+      next('/home')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

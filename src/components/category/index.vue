@@ -49,7 +49,7 @@
           .then(function ({data}) {
             Loading.close()
             if (data.code !== 0) {
-              console.error(data.msg)
+              console.log(data.msg)
               return
             }
             data = data.data

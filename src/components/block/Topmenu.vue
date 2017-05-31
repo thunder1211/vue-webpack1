@@ -24,13 +24,15 @@
       </li>
     </ul>
     <div class="topR">
-      <a class="logout" @click="logout">登出</a>
+      <!-- <router-link class="link" :to="'/login'">登录</router-link> -->
+      <a class="link" @click="logout">登出</a>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { jcookie } from '@/utils/assist'
 
 export default {
   name: 'topmenu',
@@ -46,6 +48,7 @@ export default {
       axios.get('/api/logout')
         .then(function ({data}) {
           if (data.code === 0) {
+            jcookie('isLogined', null) // 前端保存登录状态（根据后端响应）
             _this.$router.push('/login')
           } else {
             alert(data.msg)
@@ -138,11 +141,14 @@ export default {
       }
     }
   }
-  .logout{
+  .topR{
     position: absolute;
     right: 20px;
     top: 0;
-    line-height: 50px;
+    .link{
+      line-height: 50px;
+      margin-left: 10px;
+    }
   }
 }
 </style>
