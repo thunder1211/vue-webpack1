@@ -4,14 +4,25 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-import 'vue-ydui/dist/ydui.base.css'
+import zh_CN from 'vee-validate/dist/locale/zh_CN'
+import VeeValidate from 'vee-validate'
+import iView from 'iview';
 import 'iview/dist/styles/iview.css'
 import './assets/css/style.scss'
-
 // import eBus from '@/components/eventbus.js'
 import { jcookie } from '@/utils/assist'
 
 Vue.config.productionTip = false
+
+Vue.use(iView);
+
+// 配置 - vee-validate
+VeeValidate.Validator.addLocale(zh_CN);
+const config = {
+  locale: 'zh_CN',
+  events: 'blur'
+};
+Vue.use(VeeValidate, config)
 
 /* 添加响应拦截器 */
 axios.interceptors.response.use(function (res) {

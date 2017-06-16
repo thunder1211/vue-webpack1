@@ -41,26 +41,12 @@
       </div>
     </div>
 
-
-
-
-	  <router-link to="/mypage">Go to mypage</router-link>
-    <h2>{{ msg }}</h2>
-    <input type="text" v-model="msg">
-    <button @click="show1 = true">action</button>
-    <yd-actionsheet :items="myItems1" v-model="show1" cancel="取消"></yd-actionsheet>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue'
+  // import Vue from 'vue'
   import axios from 'axios'
-  import {ActionSheet} from 'vue-ydui/dist/lib.px/actionsheet'
-  import {Toast} from 'vue-ydui/dist/lib.px/dialog'
-  Vue.component(ActionSheet.name, ActionSheet)
-  Vue.prototype.$dialog = {
-  	toast: Toast
-  }
   import Banner from './Banner'
   import Daolist from './Daolist'
   import Sidelist from './Sidelist'
@@ -103,23 +89,7 @@
         testimony: {},
         wechat: {},
         daily: {},
-        sunday: {},
-        msg: 'this is Home.vue',
-        show1: false,
-        myItems1: [
-  	      {
-  	      	label: '拍照',
-  	      	other: 'other1',
-  	      	method: () => {
-  	      		this.$dialog.toast({mes: 'this is dialog toast!'})
-  	      		// Toast({mes: 'this is dialog toast!'})
-  	      	}
-  		    },
-  	      {
-  	      	label: 'cong xiangce',
-  	      	other: 'other2'
-  		    }
-        ]
+        sunday: {}
       }
     },
     methods: {
